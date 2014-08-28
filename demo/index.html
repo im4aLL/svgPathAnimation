@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG animation using jquery</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--this css is only for demo purpose-->
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sourcecode">
+	<h1>SVG Animation</h1>
+	
+	<h3>Example one:</h3>
+
+	<code>&lt;svg width=&quot;100&quot; height=&quot;100&quot; id=&quot;example1&quot;&gt;
+  &lt;path d=&quot; M 10 25
+            L 10 75
+            L 60 75
+            L 10 25&quot;
+            stroke=&quot;red&quot; stroke-width=&quot;2&quot; fill=&quot;none&quot; /&gt;
+&lt;/svg&gt;
+	</code>
+	<br>
+	<p>Output:</p>
+	<svg width="100" height="100">
+	  <path d=" M 10 25
+	            L 10 75
+	            L 60 75
+	            L 10 25"
+	            stroke="red" stroke-width="2" fill="none" />
+	</svg>
+
+	<p>Lets animate it: 
+		<button id="runDemoOne">Run animation</button> 
+		<button id="runDemoOneReverse">Run animation (reverse)</button>
+	</p>
+	<svg width="100" height="100" id="example1">
+	  <path d=" M 10 25
+	            L 10 75
+	            L 60 75
+	            L 10 25"
+	            stroke="red" stroke-width="2" fill="none" />
+	</svg>
+	<br>
+	
+	<p>Normal:</p>
+	<code>var example_one = new SvgAnimation({ "elem" : "#example1", "increaseBy" : 1, "timeout" : 10 });
+example_one.animate();</code>
+
+	<p>Reverse:</p>
+	<code>var example_one = new SvgAnimation({ "elem" : "#example1", "increaseBy" : 1, "timeout" : 10, <strong>"reverse": true</strong>  });
+example_one.animate();</code>
+
+	<hr>
+
+	<h3>Example two:</h3>
+	<p>Multiple path in this SVG</p>
+	
+	<svg id="example2" width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	  <path d="M10 10 C 20 20, 40 20, 50 10" stroke="black" fill="transparent"/>
+	  <path d="M70 10 C 70 20, 120 20, 120 10" stroke="black" fill="transparent"/>
+	  <path d="M130 10 C 120 20, 180 20, 170 10" stroke="black" fill="transparent"/>
+	  <path d="M10 60 C 20 80, 40 80, 50 60" stroke="black" fill="transparent"/>
+	  <path d="M70 60 C 70 80, 110 80, 110 60" stroke="black" fill="transparent"/>
+	  <path d="M130 60 C 120 80, 180 80, 170 60" stroke="black" fill="transparent"/>
+	  <path d="M10 110 C 20 140, 40 140, 50 110" stroke="black" fill="transparent"/>
+	  <path d="M70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent"/>
+	  <path d="M130 110 C 120 140, 180 140, 170 110" stroke="black" fill="transparent"/>
+
+	</svg>
+
+	<br>
+	<button id="runDemoTwo">Run animation</button>
+	<br><br>
+	<p>Source code:</p>
+	<code>var example_two = new SvgAnimation({ "elem" : "#example2", "increaseBy" : 3, "timeout" : 10 });
+example_two.animate();</code>
+	
+	<hr>
+	<div class="final">
+
+		<h3>Complex output: </h3>
+
+		<svg version="1.1" id="svg-circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="394px" height="394px" viewBox="0 0 394 394" enable-background="new 0 0 394 394" xml:space="preserve">
+		    
+				<path fill="none" stroke="#D52027" stroke-width="65" stroke-miterlimit="10" d="
+					M232.602,340.014c83.31-19.634,134.901-103.108,115.246-186.41C334.54,97.144,290.807,52.835,234.521,38.798" />
+				<path fill="none" stroke="#414142" stroke-width="65" stroke-miterlimit="10" d="
+					M127.301,327.602c32.544,16.399,69.84,20.797,105.301,12.412"/>
+				<path fill="none" stroke="#58595B" stroke-width="65" stroke-miterlimit="10" d="
+					M58.811,259.333c14.966,29.474,38.959,53.404,68.49,68.269"/>
+				<path fill="none" stroke="#6D6E71" stroke-width="65" stroke-miterlimit="10" d="
+					M42.822,173.465c-3.011,29.553,2.543,59.353,15.989,85.868"/>
+				<path fill="none" stroke="#808285" stroke-width="65" stroke-miterlimit="10" d="
+					M69.91,100.491c-15.096,21.631-24.411,46.753-27.088,72.974"/>
+				<path fill="none" stroke="#939598" stroke-width="65" stroke-miterlimit="10" d="
+					M111.985,59.613c-16.503,10.814-30.772,24.696-42.075,40.88"/>
+				<path fill="none" stroke="#A7A9AC" stroke-width="65" stroke-miterlimit="10" d="
+					M156.659,39.54c-15.86,4.283-30.936,11.052-44.673,20.073"/>
+				<path fill="none" stroke="#BCBEC0" stroke-width="65" stroke-miterlimit="10" d="
+					M195.538,34.206c-13.14,0.131-26.198,1.922-38.879,5.334"/>
+				<path fill="none" stroke="#D1D3D4" stroke-width="65" stroke-miterlimit="10" d="
+					M234.521,38.799c-12.766-3.179-25.85-4.718-38.982-4.591"/> 
+		</svg>
+
+		<pre class="console" style="float: right"></pre>
+
+		<br><br>
+		<button id="run">Run animation</button>
+		<br><br>
+		<p>Source:</p>
+		<code>var svgAnimSettings = {
+	"elem" : "#svg-circle",
+	"increaseBy" : 3,
+	"timeout" : 1,
+	"reverse" : true
+};
+
+var svgCircle = new SvgAnimation(svgAnimSettings);
+
+svgCircle.animate(function(response){
+	console.log(response);
+});</code>
+		
+	</div>
+	
+
+</div>
+
+
+
+<script src="jquery.js"></script>
+<script src="../svg.min.js"></script>
+
+<script>
+	jQuery(document).ready(function($) {
+		
+		$('#runDemoOne').click(function(event) {
+			var example_one = new SvgAnimation({ "elem" : "#example1", "increaseBy" : 1, "timeout" : 10 });
+			example_one.animate();
+		});
+
+		$('#runDemoOneReverse').click(function(event) {
+			var example_one = new SvgAnimation({ "elem" : "#example1", "increaseBy" : 1, "timeout" : 10, "reverse": true });
+			example_one.animate();
+		});
+
+		$('#runDemoTwo').click(function(event) {
+			var example_two = new SvgAnimation({ "elem" : "#example2", "increaseBy" : 3, "timeout" : 10 });
+			example_two.animate();
+		});
+
+		$('#run').click(function(event) {
+			$(".console").html('');
+
+			var svgAnimSettings = {
+				"elem" : "#svg-circle",
+				"increaseBy" : 3,
+				"timeout" : 1,
+				"reverse" : true
+			};
+
+			var svgCircle = new SvgAnimation(svgAnimSettings);
+
+			svgCircle.animate(function(response){
+				$(".console").append('Animating path: '+response.current+' of '+ response.total+'<br>');
+				if( response.current == response.total ) {
+					$(".console").append('Complete callback! yo bitch!');
+				}
+			});
+		});
+	}); 
+</script>
+
+</body>
+</html>

@@ -11,7 +11,13 @@
 <body>
 
 <div class="sourcecode">
-	<h1>SVG Animation</h1>
+	<h1>SVG Animation <iframe style="float:right" src="http://ghbtns.com/github-btn.html?user=im4aLL&repo=svgPathAnimation&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe></h1>
+
+	<div style="float: right">
+		<a href="https://raw.githubusercontent.com/im4aLL/svgPathAnimation/master/svg.min.js" target="_blank">Download SVG JS</a>
+		<a href="https://github.com/im4aLL/svgPathAnimation/archive/master.zip">Download full demo</a>
+		
+	</div>
 	
 	<h3>Example one:</h3>
 
@@ -111,14 +117,19 @@ example_two.animate();</code>
 		<pre class="console" style="float: right"></pre>
 
 		<br><br>
+		
+		increaseBy: <input type="number" name="increaseBy" min="1" value="3">
+		timeout: <input type="number" name="timeout" min="1" value="1">
+		reverse: <select name="reverse"><option value="0">False</option><option value="1" selected="selected">True</option></select>
+
 		<button id="run">Run animation</button>
 		<br><br>
 		<p>Source:</p>
 		<code>var svgAnimSettings = {
 	"elem" : "#svg-circle",
-	"increaseBy" : 3,
-	"timeout" : 1,
-	"reverse" : true
+	"increaseBy" : <span class="increaseBy">3</span>,
+	"timeout" : <span class="timeout">1</span>,
+	"reverse" : <span class="reverse">true</span>
 };
 
 var svgCircle = new SvgAnimation(svgAnimSettings);
@@ -158,11 +169,21 @@ svgCircle.animate(function(response){
 		$('#run').click(function(event) {
 			$(".console").html('');
 
+			var increaseBy = parseInt($('input[name="increaseBy"]').val()) < 2 ? 1 : parseInt($('input[name="increaseBy"]').val()),
+				timeout = parseInt($('input[name=timeout]').val()) < 2 ? 1 : parseInt($('input[name=timeout]').val()),
+				reverse = parseInt($('select[name=reverse]').val()) == 0 ? false : true;
+
+			//console.log( "increaseBy - " + increaseBy + " timeout " + timeout + " reverse " + reverse );
+			
+			$('.increaseBy').html(increaseBy);
+			$('.timeout').html(timeout);
+			$('.reverse').html( (reverse===true) ? 'true' : 'false' );
+
 			var svgAnimSettings = {
 				"elem" : "#svg-circle",
-				"increaseBy" : 3,
-				"timeout" : 1,
-				"reverse" : true
+				"increaseBy" : increaseBy,
+				"timeout" : timeout,
+				"reverse" : reverse
 			};
 
 			var svgCircle = new SvgAnimation(svgAnimSettings);
@@ -170,7 +191,7 @@ svgCircle.animate(function(response){
 			svgCircle.animate(function(response){
 				$(".console").append('Animating path: '+response.current+' of '+ response.total+'<br>');
 				if( response.current == response.total ) {
-					$(".console").append('Complete callback! yo bitch!');
+					$(".console").append('Complete callback!');
 				}
 			});
 		});

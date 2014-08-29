@@ -25,3 +25,6 @@ hr {
 
 h3 { padding-bottom: 10px }
 p { padding-bottom: 10px }
+
+input, select { padding: 3px 5px }
+input[type="number"] { width: 50px }
